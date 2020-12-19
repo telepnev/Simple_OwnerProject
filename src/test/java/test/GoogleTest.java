@@ -1,4 +1,6 @@
+package test;
 
+import config.ConfigHelper;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
@@ -13,15 +15,11 @@ public class GoogleTest {
 
     @Test
     void selenideSearchTest() {
-        String searchItem = "";
-        String searchResult = "";
-        // Открыть google
+        String searchItem = ConfigHelper.getSearchItem();
+        String searchResult = ConfigHelper.getSearchResult();
+
         open("https://google.com");
-
-        // Ввести Selenide в поиск
         $(byName("q")).setValue(searchItem).pressEnter();
-
-        // Проверить, что Selenide появился в результатах поиска
         $("html").shouldHave(text(searchResult));
     }
     }
