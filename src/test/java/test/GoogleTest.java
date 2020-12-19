@@ -1,5 +1,6 @@
 package test;
 
+import com.codeborne.selenide.Configuration;
 import config.ConfigHelper;
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +16,12 @@ public class GoogleTest {
 
     @Test
     void selenideSearchTest() {
+        Configuration.remote = ConfigHelper.getWebDriverRemote();
         String searchItem = ConfigHelper.getSearchItem();
         String searchResult = ConfigHelper.getSearchResult();
+        String searchSite = ConfigHelper.getSearchSite();
 
-        open("https://google.com");
+        open(searchSite);
         $(byName("q")).setValue(searchItem).pressEnter();
         $("html").shouldHave(text(searchResult));
     }

@@ -13,9 +13,14 @@ public interface WebConfig extends Config {
     @Key("search.item")
     String searchItem();
 
-
     @Key("search.result")
     String searchResult();
+
+    @Key("search.site")
+    String searchSite();
+
+    @Key("webdriver.remote")
+    String webdriverRemote();
 
 
 
